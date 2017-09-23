@@ -61,9 +61,11 @@ class BookmarkRestController {
             @PathVariable String username, @PathVariable String weapon) {
         Match match = this.matchRepository.findByGameName(gameName);
         User user = this.userRepository.findByUserName(username);
-        user.setWeapon(weapon);
-        this.userRepository.save(user);
+        if (user != null && weapon != null) {
+            user.setWeapon(weapon);
+            this.userRepository.save(user);
+        }
         return ResponseEntity.ok(match);
 
-    } 
+    }
 }

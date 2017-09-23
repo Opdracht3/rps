@@ -1,0 +1,25 @@
+<div ng-repeat="games in gamesList">	
+	<div class="row row-horizon">
+	  <div class="col-xs-6">
+	  	  <p><strong>Game Name:</strong> {{ games.gameName }}</p>		
+			  <p class="outer-p">
+				    <div class="inner-p">
+				      <span class="label label-primary">Player 11 :</span> {{games.player1.name}}		
+				    </div>
+					<div class="inner-p">
+				      <span class="label label-primary">Player 22 :</span> {{games.player2.name}}		
+				    </div>    
+				    <div class="inner-p">
+				      <span class="label label-primary">Game Won By :</span> {{ games.gameWonBy }}
+				    </div>
+			  </p>		
+			  <p class="outer-p-3">
+			    <a ng-href="http://www.amazon.in/s/ref=nb_sb_noss_1?url=search-alias%3Ddvd&field-keywords={{ games.Title }}" target="_blank" class="btn btn-default btn-xl btn-info">Join Game</a>
+			  </p>
+	   </div>
+	</div>
+</div>
+   
+
+
+  <!--img ng-src="{{ games.id }}" class="thumbnail animated flip movie-poster"-->
