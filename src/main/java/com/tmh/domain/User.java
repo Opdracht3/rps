@@ -7,22 +7,35 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    // @OneToMany(mappedBy = "match_id")
-    // private Set<Bookmark> bookmarks = new HashSet<>();
-
     @Id
     @GeneratedValue
     private Long id;
 
     public String userName;
+    public String passWord;
     public String weapon;
 
-    public Long getId() {
-        return id;
+    User() { // jpa only
+    }
+
+    User(String userName) {
+        this.userName = userName;
     }
 
     public String getUserName() {
         return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getWeapon() {
@@ -33,10 +46,5 @@ public class User {
         this.weapon = weapon;
     }
 
-    User(String userName) {
-        this.userName = userName;
-    }
 
-    User() { // jpa only
-    }
 }

@@ -21,6 +21,7 @@
 /bin/
 /.classpath
 .gradle
+.gradle/*
 /build/
 /node_modules
 /bower_component
