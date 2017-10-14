@@ -17,7 +17,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 
-group = 'com.example'
+group = 'com.tmh'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -40,6 +40,6 @@ jar {
         'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
         'Main-Class': 'com/tmh/Application'
       )}
-      baseName = 'spring-data-mongodb-example'
+      baseName = 'spring-rps-service'
       version =  '1.0'
-  }
+}

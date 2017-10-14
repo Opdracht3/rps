@@ -30,9 +30,9 @@ class GameRestController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/join/{gameName}/{username}")
     Match joinMatch(@PathVariable String gameName,
-            @PathVariable String username) {
+            @PathVariable String userName) {
         Match match = this.matchRepository.findByGameName(gameName);
-        User user = new User(username);
+        User user = new User(userName);
         userRepository.save(user);
         match.addUser(user);
         this.matchRepository.save(match);
@@ -88,9 +88,7 @@ class GameRestController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
-    ResponseEntity<User> createUser(@RequestBody Map<String, String> body) {
-
-        User user = new User(body.get("username"));
+    ResponseEntity<User> createUser(@RequestBody User user) {
         this.userRepository.save(user);
         logger.debug("Created Name {}", user.getUserName());
         return ResponseEntity.ok(user);
@@ -117,16 +115,15 @@ class GameRestController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/authenticate")
     ResponseEntity<User> loginUserByIdAndPassword(
-            @RequestBody Map<Object, Object> body) {
-        String userName = (String) body.get("username");
-        String anyPassword = (String) body.get("password");
-        logger.debug("loginUserBy Name {} and password {}", userName,
-                anyPassword);
-        User user = this.userRepository.findByUserName(userName);
-        if (user != null) {
-            if (user.getPassWord() != null
-                    && user.getPassWord().equals(anyPassword)) {
-                return ResponseEntity.ok(user);
+            @RequestBody User user) {
+        logger.debug("loginUserBy Name {} and password {}", user.getUserName(),
+                user.getPassWord());
+        User userInDatabase = this.userRepository
+                .findByUserName(user.getUserName());
+        if (userInDatabase != null) {
+            if (userInDatabase.getPassWord() != null && userInDatabase
+                    .getPassWord().equals(user.getPassWord())) {
+                return ResponseEntity.ok(userInDatabase);
             } else {
                 return ResponseEntity.badRequest().build();
             }

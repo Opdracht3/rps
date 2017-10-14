@@ -14,6 +14,8 @@ public class User {
     public String userName;
     public String passWord;
     public String weapon;
+    public String firstName;
+    public String lastName;
 
     User() { // jpa only
     }
@@ -26,17 +28,38 @@ public class User {
         return userName;
     }
 
+
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 
     public String getPassWord() {
         return passWord;
     }
 
+
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public String getWeapon() {
         return weapon;
