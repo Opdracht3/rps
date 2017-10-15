@@ -2,16 +2,17 @@ pipeline {
     agent any
 
     stages {
-		stage('Checkout') {
-			// Pull the code from the repo
-			steps {
-				checkout scm
-			}
-		}
+		stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
-				sh("gradlew clean build")
+				sh("${project}/gradlew clean build")
             }
         }
 		stage('Package') {
