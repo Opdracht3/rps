@@ -5,13 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-				sh("./bash gradlew clean build")
+				sh("chmod +x gradlew")
+				sh("gradlew clean build")
             }
         }
 		stage('Package') {
             steps {
                 echo 'Building..'
-				sh("./bash gradlew bootRepackage")
+				sh("gradlew bootRepackage")
             }
         }
         stage('Test') {
