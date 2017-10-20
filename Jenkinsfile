@@ -23,7 +23,7 @@ pipeline {
 		stage('Build Docker') {
             steps {
                 echo 'Buildin docker....'
-				sh("docker build . --tag husamay/rps-backend:${versionNumber}")
+				sh("docker build . --tag husamay/rps-backend:${BUILD_NUMBER}")
             }
         }
 
