@@ -9,4 +9,4 @@ Rock paper scissor
 
 //steps run code from repo
 //docker pull husamay/rps-backend:0.1
-//docker run husamay/rps-backend:0.1
+//docker run --name backend-container -d -p 4040:8080 husamay/rps-backend:0.1
