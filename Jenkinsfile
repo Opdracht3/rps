@@ -22,14 +22,20 @@ pipeline {
         }
 		stage('Build Docker') {
             steps {
-                echo 'Buildin docker....'
-				docker.withRegistry('https://hub.docker.com/', 'docker-repo') {
-
-				def customImage = docker.build("rps-backend:0.0.${BUILD_NUMBER}")
-
-				/* Push the container to the custom Registry */
-				customImage.push()
+                echo 'Buildin docker.
+				withCredentials([credentialsId: 'docker-repo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']) {
+				sh("sudo docker login -u=$USERNAME -p=$PASSWORD")
+				sh("sudo docker build . --tag husamay/rps-backend:0.1.${BUILD_NUMBER}")
 		}
+            }
+        }
+
+        stage('Deploy Docker') {
+            steps {
+                echo 'Deploying 0.1.${BUILD_NUMBER} to repo....'
+				sh("sudo docker push husamay/rps-backend:0.1.${BUILD_NUMBER}")
+                echo 'Deploying latest tag to repo....'
+				sh("sudo docker push husamay/rps-backend")
             }
         }
 		stage('Deploy Hosting') {
