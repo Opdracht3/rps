@@ -38,11 +38,5 @@ pipeline {
 				sh("sudo docker push husamay/rps-backend")
             }
         }
-		stage('Deploy Hosting') {
-            steps {
-                echo 'Deploying....'
-				sh("sudo sloppy start --var=domain:rps-project.sloppy.zone ./sloppy.json")
-            }
-        }
     }
 }
