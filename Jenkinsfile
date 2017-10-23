@@ -22,7 +22,7 @@ pipeline {
         }
 		stage('Build Docker') {
             steps {
-                echo 'Buildin docker.
+                echo 'Buildin docker.'
 				withCredentials([credentialsId: 'docker-repo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']) {
 				sh("sudo docker login -u=$USERNAME -p=$PASSWORD")
 				sh("sudo docker build . --tag husamay/rps-backend:0.1.${BUILD_NUMBER}")
