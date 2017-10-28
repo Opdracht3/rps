@@ -1,7 +1,10 @@
 # rps
 
+Use docker build .
+this will build a ready to use docker container with the application:	 
+
 # Contribute
-You can contribute to Napa.js in following ways:
+You can contribute to rps Backend in following ways:
 
 * [Report issues](https://github.com/Opdracht3/rps-backend/issues) and help us verify fixes as they are checked in.
 * Review the [source code changes](https://github.com/Opdracht3/rps-backend/pulls).
