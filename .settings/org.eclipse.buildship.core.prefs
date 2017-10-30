@@ -1,3 +1,7 @@
-#Sat Sep 23 10:15:32 CEST 2017
-eclipse.preferences.version=1
+build.scans.enabled=true
+connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/Users/mehmetsozen/gradle-4.2.1))
 connection.project.dir=
+eclipse.preferences.version=1
+gradle.user.home=/Users/mehmetsozen/gradle-4.2.1
+offline.mode=false
+override.workspace.settings=true
